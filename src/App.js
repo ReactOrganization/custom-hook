@@ -1,19 +1,6 @@
 import './App.css';
 import React, { useState }from 'react'
-import { getOneTodo } from './api'
-
-function useRepos(id) {
-	const [repos, setRepos] = React.useState([])
-	const [loading, setLoading] = React.useState(true)
-
-	React.useEffect(() => {
-		setLoading(true)
-		getOneTodo(id).then(response => response.json())
- 		 .then(json => { setRepos(json); setLoading(false) })
-	}, [id])
-
-	return [loading, repos, setRepos]
-}
+import { useRepos } from './custom-hooks/useRepos'
 
 function App() {
 	const [id, setId] = useState(1)
